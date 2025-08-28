@@ -10,25 +10,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root{
-      --yellow:#ffd200;       /* Brand Yellow */
-      --yellow-600:#ffc400;   /* Darker Yellow */
-      --yellow-700:#ffb800;
-      --black:#0a0a0a;        /* Rich Black */
-      --gray-100:#f6f6f6;
-      --gray-200:#eaeaea;
-      --gray-300:#d9d9d9;
-      --gray-700:#3a3a3a;
-      --white:#ffffff;
-      --radius-xl:22px;
-      --radius-lg:16px;
-      --shadow-xl:0 30px 80px rgba(0,0,0,.45);
-      --shadow-md:0 10px 30px rgba(0,0,0,.25);
+      --yellow:#ffd200; --yellow-600:#ffc400; --yellow-700:#ffb800;
+      --black:#0a0a0a; --gray-100:#f6f6f6; --gray-200:#eaeaea; --gray-300:#d9d9d9;
+      --white:#ffffff; --radius-xl:22px; --radius-lg:16px;
+      --shadow-xl:0 30px 80px rgba(0,0,0,.45); --shadow-md:0 10px 30px rgba(0,0,0,.25);
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--white);background:var(--black);}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--white);background:var(--black)}
     a{color:inherit;text-decoration:none}
     .container{max-width:1150px;margin:0 auto;padding:0 20px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:999px;font-weight:700;letter-spacing:.2px;transition:.25s ease;}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:999px;font-weight:700;letter-spacing:.2px;transition:.25s ease}
     .btn-primary{background:var(--yellow);color:#121212;border:2px solid transparent}
     .btn-primary:hover{transform:translateY(-2px);background:var(--yellow-600)}
     .btn-ghost{border:2px solid var(--gray-300);color:var(--white);background:transparent}
@@ -44,10 +35,7 @@
     .nav-cta{display:flex;gap:10px;align-items:center}
     .hamburger{display:none;flex-direction:column;gap:4px}
     .hamburger span{width:26px;height:2.5px;background:var(--white);border-radius:3px}
-    @media(max-width:900px){
-      .nav-links{display:none}
-      .hamburger{display:flex}
-    }
+    @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}
 
     /* Mobile menu */
     .mobile{display:none;position:absolute;inset:60px 0 auto 0;background:#0d0d0d;border-top:1px solid rgba(255,255,255,.06)}
@@ -56,18 +44,16 @@
 
     /* Hero */
     .hero{position:relative;padding:82px 0 48px;overflow:hidden}
-    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
     .badge{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(255,210,0,.1);border:1px solid rgba(255,210,0,.3);color:var(--yellow)}
     h1{font-size:clamp(34px,5vw,56px);line-height:1.05;margin:18px 0}
     .lead{font-size:clamp(16px,2.5vw,19px);color:#d8d8d8;max-width:700px}
     .hero-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
-    .hero-card{background:linear-gradient(180deg,#141414, #0a0a0a);border:1px solid rgba(255,255,255,.07);box-shadow:var(--shadow-xl);border-radius:var(--radius-xl);padding:24px}
     .hero-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
     .kpi{background:#121212;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;text-align:center}
     .kpi .num{font-size:28px;font-weight:900;color:var(--yellow)}
     .glass{position:absolute;inset:-120px -40px auto -40px;height:340px;background:radial-gradient(800px 300px at 70% -100px, rgba(255,210,0,.18), transparent 60%),radial-gradient(600px 200px at 10% -80px, rgba(255,210,0,.25), transparent 55%)}
     .stripe{position:absolute;inset:auto 0 -120px 0;height:200px;background:linear-gradient(to bottom,transparent,rgba(255,210,0,.06),transparent)}
-    @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
 
     /* Trust bar */
     .trust{padding:28px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);background:#0e0e0e}
@@ -100,20 +86,18 @@
     .mock{height:340px;border-radius:14px;background:linear-gradient(135deg,#1a1a1a,#0f0f0f);border:1px dashed rgba(255,255,255,.12);display:grid;place-items:center;color:#bdbdbd}
     @media(max-width:900px){.showcase{grid-template-columns:1fr}.mock{height:220px}}
 
-    /* Pricing */
-    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .price{background:#121212;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px;position:relative}
-    .price.best{outline:2px solid var(--yellow)}
-    .tag{position:absolute;top:14px;right:14px;background:var(--yellow);color:#111;font-weight:900;font-size:12px;padding:6px 10px;border-radius:999px}
-    .price .amt{font-size:34px;font-weight:900;color:var(--yellow)}
-    .price ul{padding-left:18px;line-height:1.9;color:#d9d9d9}
-    @media(max-width:900px){.pricing{grid-template-columns:1fr}}
-
-    /* FAQ */
-    .faq{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    details{background:#101010;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px}
-    summary{cursor:pointer;font-weight:700}
-    @media(max-width:900px){.faq{grid-template-columns:1fr}}
+    /* Contact Bar */
+    .contactbar{background:var(--yellow);color:#111;padding:50px 0;border-top:1px solid rgba(0,0,0,.08);border-bottom:1px solid rgba(0,0,0,.08)}
+    .contactbar h2{color:#111;margin:0 0 8px}
+    .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+    .contact-card{background:#fff7bf;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:18px;color:#111}
+    .contact-form{background:#ffffff;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:18px;color:#111}
+    .contact-form input,.contact-form textarea{
+      width:100%;padding:14px 16px;margin:6px 0 12px;border-radius:12px;border:1px solid rgba(0,0,0,.2);background:#fff;color:#111
+    }
+    .btn-dark{background:#111;color:#fff;border:2px solid #111}
+    .btn-dark:hover{transform:translateY(-2px)}
+    @media(max-width:900px){.contact-wrap{grid-template-columns:1fr}}
 
     /* Footer */
     footer{padding:40px 0;border-top:1px solid rgba(255,255,255,.06);background:#0c0c0c;color:#d7d7d7}
@@ -139,34 +123,33 @@
       <div class="nav-links">
         <a href="#features">Features</a>
         <a href="#process">Process</a>
-        <a href="#pricing">Pricing</a>
+        <a href="#contactbar">Contact</a>
         <a href="#faq">FAQ</a>
       </div>
       <div class="nav-cta">
-        <a class="btn btn-ghost" href="#contact">Contact</a>
-        <a class="btn btn-primary" href="#cta">Get a Demo →</a>
+        <a class="btn btn-ghost" href="#contactbar">Contact</a>
+        <a class="btn btn-primary" href="#contactbar">Get a Demo →</a>
         <button class="hamburger" id="hamBtn" aria-label="menu"><span></span><span></span><span></span></button>
       </div>
     </div>
     <div class="mobile" id="mobileMenu">
       <a href="#features">Features</a>
       <a href="#process">Process</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#contactbar">Contact</a>
       <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO (preview card removed) -->
   <header class="hero">
     <div class="glass" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div>
         <span class="badge">⚡ AI automations • Yellow/Black brand</span>
         <h1>Scale with AI Workflows that <span style="color:var(--yellow)">run 24/7</span></h1>
-        <p class="lead">Genvilix designs and deploys AI agents, content systems, and end‑to‑end automations so your business ships faster, converts higher, and operates at lower cost.</p>
+        <p class="lead">Genvilix designs and deploys AI agents, content systems, and end-to-end automations so your business ships faster, converts higher, and operates at lower cost.</p>
         <div class="hero-cta">
-          <a href="#cta" class="btn btn-primary">Get Free Blueprint</a>
+          <a href="#contactbar" class="btn btn-primary">Get Free Blueprint</a>
           <a href="#features" class="btn btn-ghost">Explore Features</a>
         </div>
         <div class="hero-kpis">
@@ -174,11 +157,6 @@
           <div class="kpi"><div class="num">3–8x</div><div class="lbl">Faster execution</div></div>
           <div class="kpi"><div class="num">₹ ROI↑</div><div class="lbl">Lower cost per task</div></div>
         </div>
-      </div>
-      <div class="hero-card" data-animate>
-        <h3 style="margin:0 0 10px">Live Automation Preview</h3>
-        <p class="muted" style="margin:0 0 14px">Email → Summarize → CRM → Slack alert. One continuous workflow.</p>
-        <div class="mock">Embed demo/video/screenshot here</div>
       </div>
     </div>
     <div class="stripe" aria-hidden="true"></div>
@@ -189,7 +167,7 @@
     <div class="container trust-inner">
       <div class="pill">Built with OpenAI • Claude • Zapier • Make</div>
       <div class="pill">Deployed on Notion/Sheets/CRMs</div>
-      <div class="pill">Security‑first • Privacy‑aware</div>
+      <div class="pill">Security-first • Privacy-aware</div>
     </div>
   </div>
 
@@ -206,7 +184,7 @@
       <div class="card" data-animate>
         <div class="icon">A</div>
         <h3>Smart Inbox & Replies</h3>
-        <p>Summarize emails, draft on‑brand replies, auto‑route to CRM and notify teams.</p>
+        <p>Summarize emails, draft on-brand replies, auto-route to CRM and notify teams.</p>
       </div>
       <div class="card" data-animate>
         <div class="icon">R</div>
@@ -216,7 +194,7 @@
       <div class="card" data-animate>
         <div class="icon">C</div>
         <h3>Content Engine</h3>
-        <p>One source turned into blogs, LinkedIn posts, reels and newsletters—auto‑scheduled.</p>
+        <p>One source turned into blogs, LinkedIn posts, reels and newsletters—auto-scheduled.</p>
       </div>
       <div class="card" data-animate>
         <div class="icon">S</div>
@@ -238,12 +216,12 @@
 
   <!-- PROCESS -->
   <section id="process" class="container">
-    <div class="section-head"><div><div class="eyebrow">Method</div><h2>Simple 3‑step launch</h2></div></div>
+    <div class="section-head"><div><div class="eyebrow">Method</div><h2>Simple 3-step launch</h2></div></div>
     <div class="steps">
       <div class="step" data-animate>
         <div class="num">1</div>
         <h3>Audit & Blueprint</h3>
-        <p>We map your processes, choose high‑ROI automations, and design an execution plan.</p>
+        <p>We map your processes, choose high-ROI automations, and design an execution plan.</p>
       </div>
       <div class="step" data-animate>
         <div class="num">2</div>
@@ -258,57 +236,39 @@
     </div>
   </section>
 
-  <!-- SHOWCASE -->
-  <section class="container">
-    <div class="section-head"><div><div class="eyebrow">Showcase</div><h2>What your stack looks like after Genvilix</h2></div></div>
-    <div class="showcase">
-      <div class="panel" data-animate>
-        <h3>Marketing Ops: Lead → CRM → Nurture</h3>
-        <div class="mock">Flow diagram / screenshot</div>
+  <!-- CONTACT BAR (new) -->
+  <section id="contactbar" class="contactbar">
+    <div class="container">
+      <div class="section-head" style="margin-bottom:16px">
+        <div>
+          <div class="eyebrow" style="color:#111">Contact</div>
+          <h2>Tell us your top 3 repetitive tasks</h2>
+          <p style="color:#2b2b2b;margin:6px 0 0">We’ll reply with a quick blueprint you can launch this week.</p>
+        </div>
       </div>
-      <div class="panel" data-animate>
-        <h3>Content Ops: Blog → Reels → Newsletter</h3>
-        <div class="mock">Carousel / sample assets</div>
-      </div>
-    </div>
-  </section>
 
-  <!-- PRICING -->
-  <section id="pricing" class="container">
-    <div class="section-head"><div><div class="eyebrow">Pricing</div><h2>Pick a plan • scale later</h2></div></div>
-    <div class="pricing">
-      <div class="price" data-animate>
-        <div class="tag">Starter</div>
-        <h3>1 Workflow</h3>
-        <div class="amt">₹20,000</div>
-        <ul>
-          <li>Single automation (e.g., Email → CRM)</li>
-          <li>Basic analytics</li>
-          <li>2 weeks support</li>
-        </ul>
-        <a href="#cta" class="btn btn-primary" style="margin-top:8px">Get Started</a>
-      </div>
-      <div class="price best" data-animate>
-        <div class="tag">Most Popular</div>
-        <h3>Growth Bundle</h3>
-        <div class="amt">₹55,000</div>
-        <ul>
-          <li>Any 3 workflows</li>
-          <li>Brand style & tone setup</li>
-          <li>30 days optimization</li>
-        </ul>
-        <a href="#cta" class="btn btn-primary" style="margin-top:8px">Choose Bundle</a>
-      </div>
-      <div class="price" data-animate>
-        <div class="tag">Enterprise</div>
-        <h3>All‑in Suite</h3>
-        <div class="amt">₹1,00,000+</div>
-        <ul>
-          <li>All 5 workflows + custom</li>
-          <li>SLA, security review</li>
-          <li>Quarterly roadmap</li>
-        </ul>
-        <a href="#cta" class="btn btn-primary" style="margin-top:8px">Talk to Us</a>
+      <div class="contact-wrap">
+        <div class="contact-card">
+          <h3 style="margin:0 0 8px">Contact details</h3>
+          <p style="margin:6px 0">✉️ <b>Email:</b> hello@genvilix.in</p>
+          <p style="margin:6px 0">📞 <b>WhatsApp:</b> +91-00000-00000</p>
+          <p style="margin:6px 0">📍 <b>Location:</b> Telangana, India</p>
+          <p class="muted" style="color:#333;margin-top:10px">Prefer a call? Share your time window—we’ll schedule it.</p>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <label>Full Name
+            <input name="name" placeholder="Your name" required>
+          </label>
+          <label>Email
+            <input name="email" type="email" placeholder="you@company.com" required>
+          </label>
+          <label>Your top repetitive tasks
+            <textarea name="message" placeholder="e.g., email triage, weekly reports, content scheduling..." rows="5" required></textarea>
+          </label>
+          <button class="btn btn-dark" type="submit">Request Blueprint →</button>
+          <div id="formNote" style="font-size:13px;margin-top:8px;color:#333">This is a static demo form. See JS below to wire it up.</div>
+        </form>
       </div>
     </div>
   </section>
@@ -327,40 +287,12 @@
       </details>
       <details>
         <summary>Is my data secure?</summary>
-        <p>We use principle of least privilege, audit logs, and optional on‑prem/region‑locked providers on request.</p>
+        <p>We use principle of least privilege, audit logs, and optional on-prem/region-locked providers on request.</p>
       </details>
       <details>
         <summary>What happens after setup?</summary>
         <p>We offer retainers for monitoring, updates, and adding new automations as your needs grow.</p>
       </details>
-    </div>
-  </section>
-
-  <!-- CTA / CONTACT -->
-  <section id="cta" class="container">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">Next step</div>
-        <h2>Get your free AI Scaling Blueprint</h2>
-        <p class="muted">Tell us your top 3 repetitive tasks—we’ll map a quick win you can launch this week.</p>
-      </div>
-    </div>
-    <div class="showcase">
-      <form class="panel" id="contact">
-        <label>Name<br><input style="width:100%;padding:14px 16px;margin:6px 0 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#111;color:#eee" placeholder="Your name"></label>
-        <label>Email<br><input style="width:100%;padding:14px 16px;margin:6px 0 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#111;color:#eee" placeholder="you@company.com" type="email"></label>
-        <label>Top repetitive tasks<br><textarea style="width:100%;min-height:120px;padding:14px 16px;margin:6px 0 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#111;color:#eee" placeholder="e.g., email triage, weekly reports, content scheduling..."></textarea></label>
-        <button class="btn btn-primary" type="button" onclick="fakeSubmit()">Request Blueprint →</button>
-      </form>
-      <div class="panel" data-animate>
-        <h3>What you’ll receive</h3>
-        <ul style="line-height:1.9;color:#d9d9d9">
-          <li>1-page workflow diagram tailored to your stack</li>
-          <li>Tool recommendations & estimated ROI</li>
-          <li>Launch checklist (5–10 day plan)</li>
-        </ul>
-        <div class="mock">Blueprint preview</div>
-      </div>
     </div>
   </section>
 
@@ -385,21 +317,24 @@
   </footer>
 
   <script>
-    // Mobile menu toggle
+    // Mobile menu
     const hamBtn = document.getElementById('hamBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     hamBtn?.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
 
-    // Simple scroll‑in animation
+    // Scroll-in animation
     const observer = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target);} })
     },{threshold:.18});
     document.querySelectorAll('[data-animate]').forEach(el=>observer.observe(el));
 
-    // Fake form submit
-    function fakeSubmit(){
-      alert('Thanks! Your blueprint request has been received. (Connect this to your email/CRM via Zapier/Make).');
-    }
+    // Contact form (static demo). Replace with Formspree / Google Apps Script to make it real.
+    const contactForm = document.getElementById('contactForm');
+    const formNote = document.getElementById('formNote');
+    contactForm?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      formNote.textContent = "Thanks! We'll get back to you within 24 hours. (Connect this to Formspree/Apps Script to receive emails.)";
+    });
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
