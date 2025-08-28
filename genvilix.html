@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genvilix – AI Automation & Growth</title>
+  <meta name="description" content="Genvilix builds AI automations, content systems, and scalable workflows for modern businesses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --yellow:#ffd200;       /* Brand Yellow */
+      --yellow-600:#ffc400;   /* Darker Yellow */
+      --yellow-700:#ffb800;
+      --black:#0a0a0a;        /* Rich Black */
+      --gray-100:#f6f6f6;
+      --gray-200:#eaeaea;
+      --gray-300:#d9d9d9;
+      --gray-700:#3a3a3a;
+      --white:#ffffff;
+      --radius-xl:22px;
+      --radius-lg:16px;
+      --shadow-xl:0 30px 80px rgba(0,0,0,.45);
+      --shadow-md:0 10px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--white);background:var(--black);}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1150px;margin:0 auto;padding:0 20px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:999px;font-weight:700;letter-spacing:.2px;transition:.25s ease;}
+    .btn-primary{background:var(--yellow);color:#121212;border:2px solid transparent}
+    .btn-primary:hover{transform:translateY(-2px);background:var(--yellow-600)}
+    .btn-ghost{border:2px solid var(--gray-300);color:var(--white);background:transparent}
+    .btn-ghost:hover{border-color:var(--white);transform:translateY(-2px)}
+    /* Navbar */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.7);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--yellow),#fff06a);box-shadow:inset 0 0 0 2px rgba(0,0,0,.2),0 8px 20px rgba(255,210,0,.35)}
+    .brand-title{font-weight:900;letter-spacing:.5px}
+    .nav-links{display:flex;gap:24px}
+    .nav-links a{opacity:.9}
+    .nav-cta{display:flex;gap:10px;align-items:center}
+    .hamburger{display:none;flex-direction:column;gap:4px}
+    .hamburger span{width:26px;height:2.5px;background:var(--white);border-radius:3px}
+    @media(max-width:900px){
+      .nav-links{display:none}
+      .hamburger{display:flex}
+    }
+
+    /* Mobile menu */
+    .mobile{display:none;position:absolute;inset:60px 0 auto 0;background:#0d0d0d;border-top:1px solid rgba(255,255,255,.06)}
+    .mobile.open{display:block}
+    .mobile a{display:block;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.06)}
+
+    /* Hero */
+    .hero{position:relative;padding:82px 0 48px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+    .badge{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(255,210,0,.1);border:1px solid rgba(255,210,0,.3);color:var(--yellow)}
+    h1{font-size:clamp(34px,5vw,56px);line-height:1.05;margin:18px 0}
+    .lead{font-size:clamp(16px,2.5vw,19px);color:#d8d8d8;max-width:700px}
+    .hero-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+    .hero-card{background:linear-gradient(180deg,#141414, #0a0a0a);border:1px solid rgba(255,255,255,.07);box-shadow:var(--shadow-xl);border-radius:var(--radius-xl);padding:24px}
+    .hero-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+    .kpi{background:#121212;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;text-align:center}
+    .kpi .num{font-size:28px;font-weight:900;color:var(--yellow)}
+    .glass{position:absolute;inset:-120px -40px auto -40px;height:340px;background:radial-gradient(800px 300px at 70% -100px, rgba(255,210,0,.18), transparent 60%),radial-gradient(600px 200px at 10% -80px, rgba(255,210,0,.25), transparent 55%)}
+    .stripe{position:absolute;inset:auto 0 -120px 0;height:200px;background:linear-gradient(to bottom,transparent,rgba(255,210,0,.06),transparent)}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+
+    /* Trust bar */
+    .trust{padding:28px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);background:#0e0e0e}
+    .trust-inner{display:flex;gap:24px;flex-wrap:wrap;align-items:center;justify-content:center}
+    .trust .pill{padding:10px 14px;border:1px solid rgba(255,255,255,.08);border-radius:999px;background:#111;opacity:.85}
+
+    /* Sections */
+    section{padding:80px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:28px}
+    .eyebrow{color:var(--yellow);font-weight:800;letter-spacing:.8px;text-transform:uppercase;font-size:12px}
+    h2{font-size:clamp(26px,4vw,38px);margin:10px 0}
+    p.muted{color:#cfcfcf}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:#111;border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:20px}
+    .card h3{margin:8px 0 6px;font-size:20px}
+    .icon{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--yellow),#ffe46e);display:inline-flex;align-items:center;justify-content:center;color:#111;font-weight:900}
+    @media(max-width:900px){.features{grid-template-columns:1fr}}
+
+    /* Steps */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+    .step{background:linear-gradient(180deg,#141414,#0d0d0d);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:22px}
+    .step .num{width:38px;height:38px;border-radius:999px;background:var(--yellow);color:#151515;display:inline-flex;align-items:center;justify-content:center;font-weight:900;margin-bottom:10px}
+    @media(max-width:900px){.steps{grid-template-columns:1fr}}
+
+    /* Showcase */
+    .showcase{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+    .panel{background:#0f0f0f;border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:18px}
+    .mock{height:340px;border-radius:14px;background:linear-gradient(135deg,#1a1a1a,#0f0f0f);border:1px dashed rgba(255,255,255,.12);display:grid;place-items:center;color:#bdbdbd}
+    @media(max-width:900px){.showcase{grid-template-columns:1fr}.mock{height:220px}}
+
+    /* Pricing */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .price{background:#121212;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px;position:relative}
+    .price.best{outline:2px solid var(--yellow)}
+    .tag{position:absolute;top:14px;right:14px;background:var(--yellow);color:#111;font-weight:900;font-size:12px;padding:6px 10px;border-radius:999px}
+    .price .amt{font-size:34px;font-weight:900;color:var(--yellow)}
+    .price ul{padding-left:18px;line-height:1.9;color:#d9d9d9}
+    @media(max-width:900px){.pricing{grid-template-columns:1fr}}
+
+    /* FAQ */
+    .faq{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    details{background:#101010;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px}
+    summary{cursor:pointer;font-weight:700}
+    @media(max-width:900px){.faq{grid-template-columns:1fr}}
+
+    /* Footer */
+    footer{padding:40px 0;border-top:1px solid rgba(255,255,255,.06);background:#0c0c0c;color:#d7d7d7}
+    .foot-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center}
+    .foot-sub{display:flex;gap:10px}
+    .foot-sub input{flex:1;padding:14px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:#111;color:#eee}
+    .legal{opacity:.7;margin-top:10px;font-size:13px}
+    @media(max-width:900px){.foot-grid{grid-template-columns:1fr}}
+
+    /* Animations */
+    [data-animate]{opacity:0;transform:translateY(18px);transition:all .6s ease}
+    [data-animate].in{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="brand-title">Genvilix</div>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#process">Process</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="#contact">Contact</a>
+        <a class="btn btn-primary" href="#cta">Get a Demo →</a>
+        <button class="hamburger" id="hamBtn" aria-label="menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile" id="mobileMenu">
+      <a href="#features">Features</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="glass" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div>
+        <span class="badge">⚡ AI automations • Yellow/Black brand</span>
+        <h1>Scale with AI Workflows that <span style="color:var(--yellow)">run 24/7</span></h1>
+        <p class="lead">Genvilix designs and deploys AI agents, content systems, and end‑to‑end automations so your business ships faster, converts higher, and operates at lower cost.</p>
+        <div class="hero-cta">
+          <a href="#cta" class="btn btn-primary">Get Free Blueprint</a>
+          <a href="#features" class="btn btn-ghost">Explore Features</a>
+        </div>
+        <div class="hero-kpis">
+          <div class="kpi"><div class="num">60%+</div><div class="lbl">Ops time saved</div></div>
+          <div class="kpi"><div class="num">3–8x</div><div class="lbl">Faster execution</div></div>
+          <div class="kpi"><div class="num">₹ ROI↑</div><div class="lbl">Lower cost per task</div></div>
+        </div>
+      </div>
+      <div class="hero-card" data-animate>
+        <h3 style="margin:0 0 10px">Live Automation Preview</h3>
+        <p class="muted" style="margin:0 0 14px">Email → Summarize → CRM → Slack alert. One continuous workflow.</p>
+        <div class="mock">Embed demo/video/screenshot here</div>
+      </div>
+    </div>
+    <div class="stripe" aria-hidden="true"></div>
+  </header>
+
+  <!-- TRUST BAR -->
+  <div class="trust">
+    <div class="container trust-inner">
+      <div class="pill">Built with OpenAI • Claude • Zapier • Make</div>
+      <div class="pill">Deployed on Notion/Sheets/CRMs</div>
+      <div class="pill">Security‑first • Privacy‑aware</div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section id="features" class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Capabilities</div>
+        <h2>AI agents + automations that replace repetitive work</h2>
+        <p class="muted">From inbox triage to content engines and support bots—plug our modules into your stack and ship today.</p>
+      </div>
+    </div>
+    <div class="features">
+      <div class="card" data-animate>
+        <div class="icon">A</div>
+        <h3>Smart Inbox & Replies</h3>
+        <p>Summarize emails, draft on‑brand replies, auto‑route to CRM and notify teams.</p>
+      </div>
+      <div class="card" data-animate>
+        <div class="icon">R</div>
+        <h3>Reporting without spreadsheets</h3>
+        <p>Extract data from forms/invoices → clean → dashboards → weekly summaries.</p>
+      </div>
+      <div class="card" data-animate>
+        <div class="icon">C</div>
+        <h3>Content Engine</h3>
+        <p>One source turned into blogs, LinkedIn posts, reels and newsletters—auto‑scheduled.</p>
+      </div>
+      <div class="card" data-animate>
+        <div class="icon">S</div>
+        <h3>Support & FAQ bots</h3>
+        <p>Answer 24/7 on site/WhatsApp with human handoff for complex cases.</p>
+      </div>
+      <div class="card" data-animate>
+        <div class="icon">H</div>
+        <h3>Hiring & Onboarding</h3>
+        <p>Screen resumes, schedule interviews, and send automated onboarding packs.</p>
+      </div>
+      <div class="card" data-animate>
+        <div class="icon">W</div>
+        <h3>Workflow Orchestration</h3>
+        <p>Glue together Gmail, Sheets, Notion, Slack, CRMs—zero busywork.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="container">
+    <div class="section-head"><div><div class="eyebrow">Method</div><h2>Simple 3‑step launch</h2></div></div>
+    <div class="steps">
+      <div class="step" data-animate>
+        <div class="num">1</div>
+        <h3>Audit & Blueprint</h3>
+        <p>We map your processes, choose high‑ROI automations, and design an execution plan.</p>
+      </div>
+      <div class="step" data-animate>
+        <div class="num">2</div>
+        <h3>Build & Integrate</h3>
+        <p>We deploy AI agents and workflows across your tools with governance & security.</p>
+      </div>
+      <div class="step" data-animate>
+        <div class="num">3</div>
+        <h3>Optimize & Scale</h3>
+        <p>We iterate with real data, then add new automations for compounding gains.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section class="container">
+    <div class="section-head"><div><div class="eyebrow">Showcase</div><h2>What your stack looks like after Genvilix</h2></div></div>
+    <div class="showcase">
+      <div class="panel" data-animate>
+        <h3>Marketing Ops: Lead → CRM → Nurture</h3>
+        <div class="mock">Flow diagram / screenshot</div>
+      </div>
+      <div class="panel" data-animate>
+        <h3>Content Ops: Blog → Reels → Newsletter</h3>
+        <div class="mock">Carousel / sample assets</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="container">
+    <div class="section-head"><div><div class="eyebrow">Pricing</div><h2>Pick a plan • scale later</h2></div></div>
+    <div class="pricing">
+      <div class="price" data-animate>
+        <div class="tag">Starter</div>
+        <h3>1 Workflow</h3>
+        <div class="amt">₹20,000</div>
+        <ul>
+          <li>Single automation (e.g., Email → CRM)</li>
+          <li>Basic analytics</li>
+          <li>2 weeks support</li>
+        </ul>
+        <a href="#cta" class="btn btn-primary" style="margin-top:8px">Get Started</a>
+      </div>
+      <div class="price best" data-animate>
+        <div class="tag">Most Popular</div>
+        <h3>Growth Bundle</h3>
+        <div class="amt">₹55,000</div>
+        <ul>
+          <li>Any 3 workflows</li>
+          <li>Brand style & tone setup</li>
+          <li>30 days optimization</li>
+        </ul>
+        <a href="#cta" class="btn btn-primary" style="margin-top:8px">Choose Bundle</a>
+      </div>
+      <div class="price" data-animate>
+        <div class="tag">Enterprise</div>
+        <h3>All‑in Suite</h3>
+        <div class="amt">₹1,00,000+</div>
+        <ul>
+          <li>All 5 workflows + custom</li>
+          <li>SLA, security review</li>
+          <li>Quarterly roadmap</li>
+        </ul>
+        <a href="#cta" class="btn btn-primary" style="margin-top:8px">Talk to Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="container">
+    <div class="section-head"><div><div class="eyebrow">FAQ</div><h2>Answers before we start</h2></div></div>
+    <div class="faq">
+      <details>
+        <summary>How fast can we launch?</summary>
+        <p>Most clients launch a first workflow in 5–10 days depending on tool access and complexity.</p>
+      </details>
+      <details>
+        <summary>Which tools do you support?</summary>
+        <p>Gmail, Outlook, Notion, Airtable, Google Sheets, HubSpot, Zoho, Slack, WhatsApp, Zapier, Make, and more.</p>
+      </details>
+      <details>
+        <summary>Is my data secure?</summary>
+        <p>We use principle of least privilege, audit logs, and optional on‑prem/region‑locked providers on request.</p>
+      </details>
+      <details>
+        <summary>What happens after setup?</summary>
+        <p>We offer retainers for monitoring, updates, and adding new automations as your needs grow.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section id="cta" class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Next step</div>
+        <h2>Get your free AI Scaling Blueprint</h2>
+        <p class="muted">Tell us your top 3 repetitive tasks—we’ll map a quick win you can launch this week.</p>
+      </div>
+    </div>
+    <div class="showcase">
+      <form class="panel" id="contact">
+        <label>Name<br><input style="width:100%;padding:14px 16px;margin:6px 0 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#111;color:#eee" placeholder="Your name"></label>
+        <label>Email<br><input style="width:100%;padding:14px 16px;margin:6px 0 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#111;color:#eee" placeholder="you@company.com" type="email"></label>
+        <label>Top repetitive tasks<br><textarea style="width:100%;min-height:120px;padding:14px 16px;margin:6px 0 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#111;color:#eee" placeholder="e.g., email triage, weekly reports, content scheduling..."></textarea></label>
+        <button class="btn btn-primary" type="button" onclick="fakeSubmit()">Request Blueprint →</button>
+      </form>
+      <div class="panel" data-animate>
+        <h3>What you’ll receive</h3>
+        <ul style="line-height:1.9;color:#d9d9d9">
+          <li>1-page workflow diagram tailored to your stack</li>
+          <li>Tool recommendations & estimated ROI</li>
+          <li>Launch checklist (5–10 day plan)</li>
+        </ul>
+        <div class="mock">Blueprint preview</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:8px">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brand-title">Genvilix</div>
+        </div>
+        <div class="legal">© <span id="year"></span> Genvilix. All rights reserved. Made with ⚡ from village → global.</div>
+      </div>
+      <div>
+        <div style="margin-bottom:10px">Get updates</div>
+        <div class="foot-sub">
+          <input placeholder="Enter your email" type="email" />
+          <button class="btn btn-primary" type="button">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const hamBtn = document.getElementById('hamBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamBtn?.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
+
+    // Simple scroll‑in animation
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target);} })
+    },{threshold:.18});
+    document.querySelectorAll('[data-animate]').forEach(el=>observer.observe(el));
+
+    // Fake form submit
+    function fakeSubmit(){
+      alert('Thanks! Your blueprint request has been received. (Connect this to your email/CRM via Zapier/Make).');
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
